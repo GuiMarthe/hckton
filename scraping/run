@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+mkdir "out$1"
+scrapy runspider crawler_usp.py -a "year=$1" -a startpage=1 -a endpage=48 > "links$1"
+scrapy runspider crawler_thesis.py -a "links_file=links$1" -a "prefix=out$1/t"
+./aggregate.py "out$1" >"$1.json"
