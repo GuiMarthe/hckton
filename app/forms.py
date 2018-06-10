@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import DataRequired
 
-class addProjectForm(FlaskForm):
+class ProjectForm(FlaskForm):
     professor_name = StringField('Nome do Responsável', validators=[DataRequired()])
     email = StringField('email', validators=[DataRequired()])
     project_description = StringField('Descrição do Projeto', validators=[DataRequired()])
