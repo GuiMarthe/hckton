@@ -1,11 +1,13 @@
 from elasticsearch import Elasticsearch
+from app.bd_lattes2 import bd_latts
 
 
 class ElasticSearchService():
     _fields = ["Área do Conhecimento", "Título em português", "Título em inglês",
               "Palavras-chave em português", "Palavras-chave em inglês",
              "Resumo em português", "Resumo em inglês"]
-
+    _lates = bd_latts()
+    _PIC_PLACEHOLDER = { 'url_imagem':'https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png'  }
     def __init__(self):
         self.con = self.connect_to_ES()
 
@@ -17,7 +19,7 @@ class ElasticSearchService():
         pass
 
     def connect_to_ES(self):
-            es=Elasticsearch([{'host':'localhost','port':9200}])
+            es = Elasticsearch([{'host':'localhost','port':9200}])
             return es
 
     def results_query(self, search_query):
@@ -28,15 +30,20 @@ class ElasticSearchService():
         results = []
         for hit in res['hits']['hits']:
             dic = dict()
+
             if type( hit['_source']['Orientador']) == list:
-                dic['orientador'] = hit['_source']['Orientador'][0]
+                dic['name'] = hit['_source']['Orientador'][0]
             else:
-                dic['orientador'] = hit['_source']['Orientador']
-                dic['relevant_score'] = hit['_score']
-                dic['Unidade_da_USP'] = hit['_source']['Unidade da USP']
-                dic['area_do_conhecimento'] = hit['_source']['Área do Conhecimento']
-                dic['palavras_chave_em_portugues'] = hit['_source']['Palavras-chave em português']
-                dic['artigos_recentes'] = hit['_source']['Título em português']
+                dic['name'] = hit['_source']['Orientador']
+
+            dic['score'] = hit['_score']
+            dic['department'] = hit['_source']['Unidade da USP']
+            dic['field'] = hit['_source']['Área do Conhecimento']
+            dic['key_words'] = hit['_source']['Palavras-chave em português']
+            dic['pt_abstract'] = hit['_source']['Título em português']
+            dic['photo'] = self._lates.get(dic['name'],self._PIC_PLACEHOLDER ).get('url_imagem')
+            dic['contato'] = self._lates.get(dic['name'], self._lates['placeholder']).get('tel')
+            dic['email'] = self._lates.get(dic['name'], self._lates['placeholder']).get('email')
             results.append(dic)
 
         return results
