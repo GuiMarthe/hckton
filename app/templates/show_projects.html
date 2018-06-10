@@ -1,23 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Projetos em aberto</title>
-</head>
-<body>
+{% set title='Projetos em Aberto' %}
+{% extends 'base.html' %}
 
-<ul id = 'navigation'>
-	{% for item in pl %}
-		<div >
-			<h1 id="project_name">{{item.project_title}}</h1>
-			<div id="prof_name">
-				<p>Orientador:{{item.professor_name}}</p>
-			</div>
-			<div id="description">
-				<p>Descrição: {{item.project_description}}</p>
-			</div>
-		</div>
-	{% endfor %}
-</ul>
+{% block content %}
 
-</body>
-</html>
+<style>
+.max-lines {
+	display: block; /* or inline-block */
+	text-overflow: ellipsis;
+	word-wrap: break-word;
+	overflow: hidden;
+	max-height: 4.5em;
+	line-height: 1.5em;
+	}
+</style>
+
+<div class="column is-8 is-offset-2">
+	<div class="columns is-multiline">
+		{% for item in pl %}
+			<div class="column is-4">
+				<div class="message is-dark" style="background-color: #e9e9e9;">
+					<div class="message-header">
+						<p> {{item.project_title}} </p>
+					</div>
+					<div class="message-body">
+						<p> <b>Orientador:</b> {{item.professor_name}} </p>
+						<p class='max-lines'> <b>Descrição:</b> {{item.project_description}} <br><br><br> </p>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}

@@ -12,4 +12,5 @@ class ProjectForm(FlaskForm):
 
 
 class ProfessorSearch(FlaskForm):
-    search = TextAreaField('Busca professores')
+    search = StringField('Busca professores')
+    submit = SubmitField('Buscar')
