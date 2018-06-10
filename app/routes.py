@@ -16,7 +16,7 @@ def add_project():
         db.session.add(project)
         db.session.commit()
         return redirect('/')
-    return render_template('add_project.html', title='Adicione um projeto', form=form)
+    return render_template('add_project.html', form=form)
 
 # @app.route('/projects')
 # def display_project():
