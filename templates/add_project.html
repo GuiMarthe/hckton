@@ -1,7 +1,7 @@
 <!doctype html>
 <title>Cadastro de Projeto</title>
 <h1>Cadastro de Projeto</h1>
-<form action = '', method="post" role = "form"> 
+<form action = "{{ url_for('add_project') }}", method="post" role = "form"> 
 	<div class="form-group">
 		<label for="name">Nome:</label>
 		<input type="text" class="form-control" id="nome", name="nome", placeholder="Autor do projeto">
