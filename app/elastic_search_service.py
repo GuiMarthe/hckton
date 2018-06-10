@@ -1,5 +1,6 @@
 from elasticsearch import Elasticsearch
 
+
 class ElasticSearchService():
     _fields = ["Área do Conhecimento", "Título em português", "Título em inglês",
               "Palavras-chave em português", "Palavras-chave em inglês",

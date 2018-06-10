@@ -34,7 +34,7 @@ def search_professors():
     form = ProfessorSearch(request.form)
     if form.validate_on_submit():
         query_string = form.search.data
-    es = ElasticSerachSerrvice()
+    es = ElasticSearchService()
     pr = es.clean(es.query(query_string))
     pr = [
         {
