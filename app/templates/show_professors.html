@@ -1,40 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Professores</title>
-</head>
-<body>
+{% set title='Professores' %}
+{% extends 'base.html' %}
 
-<p><input type="text" name="Pesquisa">
-<p><input type="submit" name="submeterPesquisa">
+{% block content %}
+<div class="container" style="width: 50%;">
+	<form action="" method="post">
+		{{form.hidden_tag()}}
+		<div class="field has-addons">
+			<div class="control">
+				{{form.search(size = 50, class_='input', placeholder='Professor')}}
+			</div>
+			<div class="control">
+				{{form.submit(class_='button is-info')}}
+			</div>
+		</div>
+	</form>
+</div>
 
 
-
-<ul id = 'navigation'>
-	{% if % len(pr) > 0}
-		{% for item in pr %}
-			<div >			
-				<h1 id="project_name">{{item.name}}</h1>
-				<div id="contact">
-					<p>Palavras chaves:{{item.key_words}}</p>
+{% if pr.__len__() > 0 %}
+<br>
+<div class="columns">
+	<div class="column is-8 is-offset-2">
+		<div class="columns is-multiline is-8">
+			{% for item in pr %}
+				<div class="column is-3">
+					<figure class="image" style="width: 100%">
+						<a href="#">
+							<img src="{{item.photo}}">
+							<p class="subtitle">{{item.name}}</p>
+						</a>
+						<p><b>Relevância:</b> {{ 100*item.score }}%</p>
+					</figure>
 				</div>
-				<div id="location">
-					<p>contato:{{item.contato}}</p>
-				</div>
-				<div id="areas">
-					<p>Áreas de Pesquisa:{{item.field}}</p>
-				</div>
-				<div id="areas">
-					<p>Departamento:{{item.department}}</p>
-				</div>
-				<div id="areas">
-					<p>Resumo:{{item.pt_abstract}}</p>
-				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{%endif%}
 
-			</div>		
-		{% endfor %}
-	{%endif%}
-</ul>
-
-</body>
-</html>
+{% endblock %}

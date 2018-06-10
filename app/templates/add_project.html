@@ -2,43 +2,45 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="column is-4 is-offset-4">
-	<form action="" method="post">
-		{{form.hidden_tag()}}
-		<div class="field">
-			{{form.professor_name.label(class_='.label')}}
-			<div class="control has-icons-left has-icons-right">
-				{{form.professor_name(size = 50, class_='input')}}
-				<span class="icon is-small is-left">
-				<i class="fas fa-user"></i>
-				</span>
+<div class="columns">
+	<div class="column is-4 is-offset-4">
+		<form action="" method="post">
+			{{form.hidden_tag()}}
+			<div class="field">
+				{{form.professor_name.label(class_='.label')}}
+				<div class="control has-icons-left has-icons-right">
+					{{form.professor_name(size = 50, class_='input')}}
+					<span class="icon is-small is-left">
+					<i class="fas fa-user"></i>
+					</span>
+				</div>
 			</div>
-		</div>
-		<div class="field">
-			{{form.email.label(class_='.label')}}<br>
-			<div class="control has-icons-left has-icons-right">
-				{{form.email(size = 50, class_='input')}}
-				<span class="icon is-small is-left">
-					<i class="fas fa-envelope"></i>
-				</span>
+			<div class="field">
+				{{form.email.label(class_='.label')}}<br>
+				<div class="control has-icons-left has-icons-right">
+					{{form.email(size = 50, class_='input')}}
+					<span class="icon is-small is-left">
+						<i class="fas fa-envelope"></i>
+					</span>
+				</div>
 			</div>
-		</div>
-		<div class="field">
-			{{form.project_title.label(class_='.label')}}<br>
-			{{form.project_title(size = 50, class_='input')}}
-		</div>
-		<div class="field">
-			{{form.key_words.label(class_='.label')}}<br>
-			{{form.key_words(size = 50, class_='input')}}
-		</div>
-		<div class="field">
-			{{form.project_description.label(class_='.label')}}<br>
-			{{form.project_description(size = 50, class_='textarea')}}
-		</div>
-		
-		<div class="control">
-			{{form.submit(class_='button is-link')}}
-		</div>
-	</form>
+			<div class="field">
+				{{form.project_title.label(class_='.label')}}<br>
+				{{form.project_title(size = 50, class_='input')}}
+			</div>
+			<div class="field">
+				{{form.key_words.label(class_='.label')}}<br>
+				{{form.key_words(size = 50, class_='input')}}
+			</div>
+			<div class="field">
+				{{form.project_description.label(class_='.label')}}<br>
+				{{form.project_description(size = 50, class_='textarea')}}
+			</div>
+			
+			<div class="control">
+				{{form.submit(class_='button is-link')}}
+			</div>
+		</form>
+	</div>
 </div>
 {% endblock %}
