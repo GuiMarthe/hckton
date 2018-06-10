@@ -19,7 +19,7 @@ def add_project():
         return redirect('/add_project?success=true')
     return render_template('add_project.html', form=form, success=request.args.get('success'))
 
-@app.route('/easteregg')
+@app.route('/easteregg/')
 def easteregg():
     return "Hello, World!"
 
@@ -28,7 +28,7 @@ def easteregg():
 def index():
     return show_projects()
 
-@app.route('/show_projects')
+@app.route('/show_projects/')
 def show_projects():
     projects = Project.query.all()
     return render_template('show_projects.html', pl=projects)
