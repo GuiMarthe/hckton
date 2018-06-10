@@ -2,20 +2,21 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container" style="width: 50%;">
-	<form action="" method="post">
-		{{form.hidden_tag()}}
-		<div class="field has-addons">
-			<div class="control">
-				{{form.search(size = 50, class_='input', placeholder='Professor')}}
+<div class="columns">
+	<div class="column is-4 is-offset-4">
+		<form action="" method="post">
+			{{form.hidden_tag()}}
+			<div class="field has-addons">
+				<div class="control">
+					{{form.search(size = 50, class_='input', placeholder='Professor')}}
+				</div>
+				<div class="control">
+					{{form.submit(class_='button is-info')}}
+				</div>
 			</div>
-			<div class="control">
-				{{form.submit(class_='button is-info')}}
-			</div>
-		</div>
-	</form>
+		</form>
+	</div>
 </div>
-
 
 {% if pr.__len__() > 0 %}
 <br>
@@ -25,7 +26,7 @@
 			{% for item in pr %}
 				<div class="column is-3">
 					<figure class="image" style="width: 100%">
-						<a href="#">
+						<a href="/show_professor?name={{item.name | urlencode}}">
 							<img src="{{item.photo}}">
 							<p class="subtitle">{{item.name}}</p>
 						</a>

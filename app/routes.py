@@ -42,3 +42,14 @@ def search_professors():
     pr = [Professor(**p) for p in pr]
 
     return render_template('show_professors.html', form=form, pr=pr)
+
+@app.route('/show_professor/')
+def show_professor():
+    prof = request.args.get('name')
+    return render_template('show_professor.html', prof=None)
+
+@app.route('/show_project/')
+def show_project():
+    print(request.args.get('id'))
+    proj = Project.query.get(request.args.get('id'))
+    return render_template('show_project.html', proj=proj)

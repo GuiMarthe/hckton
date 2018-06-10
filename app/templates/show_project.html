@@ -1,0 +1,19 @@
+{% set title='Visualizar Projeto' %}
+{% extends 'base.html' %}
+
+professor_name = db.Column(db.String(1000))
+key_words = db.Column(db.String(1000))
+
+{% block content %}
+<div class="columns">
+	<div class="column is-4 is-offset-4">
+		<div class="title">{{proj.project_title}}</div>
+		<p><b>Orientador:</b> {{proj.professor_name}}</p>
+		<div> {% for kw in proj.key_words.split(',') %} <span class="tag"> {{ kw.strip() }} </span> {% endfor %} </div>
+		{% for line in proj.project_description.split('\n') %}
+		<p> {{line}} </p>
+		{% endfor %}
+	</div>
+</div>
+
+{% endblock %}

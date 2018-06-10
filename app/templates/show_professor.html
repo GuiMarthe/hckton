@@ -1,0 +1,18 @@
+{% set title='Buscar Professores' %}
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="columns">
+	<div class="column is-4 is-offset-4">
+		{% if prof.photo%}
+		<div class="title">{{prof.name}}</div>
+		<div class="subtitle">{{prof.department}} ({{prof.field}})</div>
+		{% if prof.contato %} <p><b>Contato:</b> {{prof.contato}}</p> {% endif %}
+		<div> {% for kw in prof.key_words %} <span class="tag"> kw </span> {% endfor %} </div>
+		{% for line in prof.pt_abstract.split('\n') %}
+		<p> {{line}} </p>
+		{% endfor %}
+	</div>
+</div>
+
+{% endblock %}
