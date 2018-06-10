@@ -10,3 +10,16 @@ class Project(db.Model):
 
     def __repr__(self):
         return '<Project {}>'.format(self.project_title)
+
+
+class Professors(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(1000))
+    score = db.Column()
+    department = db.Column()
+    field = db.Column()
+    key_words = db.Column()
+    pt_abstractt = db.Column()
+
+    def __repr__(self):
+        return '<Professor {}>'.format(self.name)
