@@ -5,9 +5,9 @@ from app.forms import ProjectForm
 @app.route('/add_project/', methods=['POST', 'GET'])
 def add_project():
     form = ProjectForm()
-        if form.validate_on_submit():
-        flash('Projeto {} adicionado.'.format(
-            form.project_title.data))
+    if form.validate_on_submit():
+        print('Projeto de {} adicionado.'.format(
+            form.professor_name.data))
         return redirect('/')
     return render_template('add_project.html', title='Adicione um projeto', form=form)
 
@@ -18,3 +18,9 @@ def add_project():
 @app.route('/')
 def index():
     return "Hello, World!"
+
+
+@app.route('/show_projects')
+def show_projects():
+    pass
+
