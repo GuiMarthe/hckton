@@ -1,7 +1,7 @@
-from flask import render_template, flash, redirect
+from flask import render_template, flash, redirect, request
 from app import app, db
-from app.forms import ProjectForm
-from app.models import Project
+from app.forms import ProjectForm, ProfessorSearch
+from app.models import Project, Professor
 
 @app.route('/add_project/', methods=['POST', 'GET'])
 def add_project():
@@ -31,6 +31,35 @@ def index():
 def show_projects():
     projects = Project.query.all()
     return render_template('show_projects.html', pl=projects)
+
+@app.route('/show_professors')
+def search_professors():
+    form = ProfessorSearch(request.form)
+    pr = [
+        {
+            'name':  'Adilson simonis',
+            'score': 0.67,
+            'department': 'IME',
+            'field': 'probabilidade',
+            'key_words': 'Grafos|probabilidade',
+            'pt_abstract': 'velinho firmex',
+            'contato': 'adilson@ig.com.br'
+        },
+        {
+            'name':  'Daciberg',
+            'score': 0.75,
+            'department': 'IME',
+            'field': 'análise',
+            'key_words': 'Matemática',
+            'pt_abstract': 'outro velinho firmex',
+            'contato': 'daciber@bol.com.br'
+        },
+    ]
+
+    pr = [Professor(**p) for p in pr]
+
+    return render_template('show_professors.html', form=form, pr=pr)
+
 
 
 

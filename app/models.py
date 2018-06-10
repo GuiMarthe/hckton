@@ -1,4 +1,5 @@
 from app import db
+from collections import namedtuple
 
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -12,14 +13,7 @@ class Project(db.Model):
         return '<Project {}>'.format(self.project_title)
 
 
-class Professors(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(1000))
-    score = db.Column()
-    department = db.Column()
-    field = db.Column()
-    key_words = db.Column()
-    pt_abstractt = db.Column()
 
-    def __repr__(self):
-        return '<Professor {}>'.format(self.name)
+Professor = namedtuple(typename='Professor',
+                       field_names='name score department field key_words pt_abstract contato'.split())
+
