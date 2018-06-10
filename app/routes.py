@@ -44,7 +44,6 @@ def search_professors():
 
     return render_template('show_professors.html', form=form, pr=pr)
 
-<<<<<<< HEAD
 @app.route('/show_professor/')
 def show_professor():
     prof = request.args.get('name')
@@ -55,5 +54,3 @@ def show_project():
     print(request.args.get('id'))
     proj = Project.query.get(request.args.get('id'))
     return render_template('show_project.html', proj=proj)
-=======
->>>>>>> 962812ce4da9fab71a894e75f44405b1bc7cb10e
