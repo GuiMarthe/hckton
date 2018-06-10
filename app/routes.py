@@ -3,6 +3,7 @@ from app import app, db
 from app.forms import ProjectForm, ProfessorSearch
 from app.models import Project, Professor
 from app.elastic_search_service import ElasticSearchService
+import json
 
 @app.route('/add_project/', methods=['POST', 'GET'])
 def add_project():
@@ -42,11 +43,11 @@ def search_professors():
     if pr:
         pr = [Professor(**p) for p in pr]
 
-    return render_template('show_professors.html', form=form, pr=pr)
+    return render_template('show_professors.html', form=form, pr=pr, json=json)
 
 @app.route('/show_professor/')
 def show_professor():
-    prof = request.args.get('name')
+    prof =  request.args.get('name')
     return render_template('show_professor.html', prof=None)
 
 @app.route('/show_project/')

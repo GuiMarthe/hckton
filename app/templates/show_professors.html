@@ -26,7 +26,7 @@
 			{% for item in pr %}
 				<div class="column is-3">
 					<figure class="image" style="width: 100%">
-						<a href="/show_professor?name={{item.name | urlencode}}">
+						<a href="/show_professor?name={{json.puts(item) | urlencode}}">
 							<img src="{{item.photo}}">
 							<p class="subtitle">{{item.name}}</p>
 						</a>
