@@ -29,56 +29,16 @@ def show_projects():
     projects = Project.query.all()
     return render_template('show_projects.html', pl=projects)
 
-@app.route('/show_professors/')
+@app.route('/show_professors/', methods=['GET', 'POST'])
 def search_professors():
     form = ProfessorSearch(request.form)
     if form.validate_on_submit():
         query_string = form.search.data
-    es = ElasticSearchService()
-    pr = es.clean(es.query(query_string))
-    pr = [
-        {
-            'name':  'Adilson simonis',
-            'score': 0.67,
-            'department': 'IME',
-            'field': 'probabilidade',
-            'key_words': ['Grafos', 'probabilidade'],
-            'pt_abstract': 'velinho firmex',
-            'contato': 'adilson@ig.com.br',
-            'photo': 'https://www.ime.usp.br/components/com_fobos/obterfoto.php?cid=82868',
-        },
-        {
-            'name':  'Daciberg',
-            'score': 0.75,
-            'department': 'IME',
-            'field': 'análise',
-            'key_words': ['Matemática'],
-            'pt_abstract': 'outro velinho firmex',
-            'contato': 'daciber@bol.com.br',
-            'photo': 'https://www.ime.usp.br/components/com_fobos/obterfoto.php?cid=28901',
-        },
-        {
-            'name':  'Adriana Kanzepolsky',
-            'score': 0.75,
-            'department': 'FFLCH',
-            'field': 'Língua',
-            'key_words': ['Literatura','Poesia'],
-            'pt_abstract': 'professora dahora',
-            'contato': 'kanzepol@ig.com.br',
-            'photo': None,
-        },
-                {
-            'name':  'Ana Paula Lepique',
-            'score': 0.5,
-            'department': 'ICB',
-            'field': 'Biologia',
-            'key_words': ['Microambiente tumoral'],
-            'pt_abstract': 'outra professora dahora',
-            'contato': 'Lepique@bol.com.br',
-            'photo': 'https://www.google.com.br/imgres?imgurl=http%3A%2F%2Fwww.incthpv.org.br%2Fupl%2Fupl_img_quemsou%2F129477963595836978_Lepique.jpg&imgrefurl=http%3A%2F%2Fwww.incthpv.org.br%2Finstituto%2Fcurriculo.aspx%3FquemSou%3D8&docid=4gzCgJIu_2VMxM&tbnid=3esgbdmBTMZpwM%3A&vet=10ahUKEwj-9Z6D9cjbAhVDOZAKHQPdBT0QMwgnKAAwAA..i&w=150&h=223&bih=945&biw=918&q=ana%20paula%20lepique%20lattes&ved=0ahUKEwj-9Z6D9cjbAhVDOZAKHQPdBT0QMwgnKAAwAA&iact=mrc&uact=8',
-        }
-    ]
-
+        es = ElasticSearchService()
+        pr = es.clean(es.query(query_string))
+    else:
+        pr = []
+    
     pr = [Professor(**p) for p in pr]
 
     return render_template('show_professors.html', form=form, pr=pr)
