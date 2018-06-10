@@ -2,6 +2,7 @@ from flask import render_template, flash, redirect, request
 from app import app, db
 from app.forms import ProjectForm, ProfessorSearch
 from app.models import Project, Professor
+from app.elastic_search_service import ElasticSerachService
 
 @app.route('/add_project/', methods=['POST', 'GET'])
 def add_project():
@@ -35,26 +36,10 @@ def show_projects():
 @app.route('/show_professors')
 def search_professors():
     form = ProfessorSearch(request.form)
-    pr = [
-        {
-            'name':  'Adilson simonis',
-            'score': 0.67,
-            'department': 'IME',
-            'field': 'probabilidade',
-            'key_words': 'Grafos|probabilidade',
-            'pt_abstract': 'velinho firmex',
-            'contato': 'adilson@ig.com.br'
-        },
-        {
-            'name':  'Daciberg',
-            'score': 0.75,
-            'department': 'IME',
-            'field': 'análise',
-            'key_words': 'Matemática',
-            'pt_abstract': 'outro velinho firmex',
-            'contato': 'daciber@bol.com.br'
-        },
-    ]
+    if form.validate_on_submit():
+        query_string = form.search.data
+    es = ElasticSerachService()
+    pr = es.clean(es.query(query_string))
 
     pr = [Professor(**p) for p in pr]
 
@@ -62,4 +47,25 @@ def search_professors():
 
 
 
+
+    # pr = [
+    #         {
+    #             'name':  'Adilson simonis',
+    #             'score': 0.67,
+    #             'department': 'IME',
+    #             'field': 'probabilidade',
+    #             'key_words': 'Grafos|probabilidade',
+    #             'pt_abstract': 'velinho firmex',
+    #             'contato': 'adilson@ig.com.br'
+    #         },
+    #         {
+    #             'name':  'Daciberg',
+    #             'score': 0.75,
+    #             'department': 'IME',
+    #             'field': 'análise',
+    #             'key_words': 'Matemática',
+    #             'pt_abstract': 'outro velinho firmex',
+    #             'contato': 'daciber@bol.com.br'
+    #         },
+    # ]
 
