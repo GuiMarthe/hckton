@@ -15,5 +15,5 @@ class Project(db.Model):
 
 
 Professor = namedtuple(typename='Professor',
-                       field_names='name score department field key_words pt_abstract contato photo'.split())
+                       field_names='name score department field key_words pt_abstract photo contato email'.split())
 
