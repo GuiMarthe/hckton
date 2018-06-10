@@ -29,7 +29,7 @@ def index():
 
 @app.route('/show_projects/')
 def show_projects():
-    projects = Project.query.get(5)
+    projects = Project.query.all()
     return render_template('show_projects.html', pl=projects)
 
 
