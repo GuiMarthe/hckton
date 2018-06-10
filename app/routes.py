@@ -32,7 +32,7 @@ def show_projects():
     projects = Project.query.all()
     return render_template('show_projects.html', pl=projects)
 
-@app.route('/show_professors')
+@app.route('/show_professors/')
 def search_professors():
     form = ProfessorSearch(request.form)
     pr = [
@@ -41,18 +41,20 @@ def search_professors():
             'score': 0.67,
             'department': 'IME',
             'field': 'probabilidade',
-            'key_words': 'Grafos|probabilidade',
+            'key_words': ['Grafos', 'probabilidade'],
             'pt_abstract': 'velinho firmex',
-            'contato': 'adilson@ig.com.br'
+            'contato': 'adilson@ig.com.br',
+            'photo': 'https://www.ime.usp.br/components/com_fobos/obterfoto.php?cid=82868',
         },
         {
             'name':  'Daciberg',
             'score': 0.75,
             'department': 'IME',
             'field': 'análise',
-            'key_words': 'Matemática',
+            'key_words': ['Matemática'],
             'pt_abstract': 'outro velinho firmex',
-            'contato': 'daciber@bol.com.br'
+            'contato': 'daciber@bol.com.br',
+            'photo': 'https://www.ime.usp.br/components/com_fobos/obterfoto.php?cid=28901',
         },
     ]
 
