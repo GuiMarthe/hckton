@@ -9,3 +9,5 @@ class ProjectForm(FlaskForm):
     key_words = StringField('Palavras Chave', validators=[DataRequired()])
     project_title = StringField('Titulo do projeto', validators=[DataRequired()])
     submit = SubmitField('Adicionar projeto')
+
+ class select = SelectField('Procure')
