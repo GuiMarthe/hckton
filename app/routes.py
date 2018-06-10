@@ -56,12 +56,32 @@ def search_professors():
             'contato': 'daciber@bol.com.br',
             'photo': 'https://www.ime.usp.br/components/com_fobos/obterfoto.php?cid=28901',
         },
+        {
+            'name':  'Adriana Kanzepolsky',
+            'score': 0.75,
+            'department': 'FFLCH',
+            'field': 'Língua',
+            'key_words': ['Literatura','Poesia'],
+            'pt_abstract': 'professora dahora',
+            'contato': 'kanzepol@ig.com.br',
+            'photo': None,
+        },
+                {
+            'name':  'Ana Paula Lepique',
+            'score': 0.5,
+            'department': 'ICB',
+            'field': 'Biologia',
+            'key_words': ['Microambiente tumoral'],
+            'pt_abstract': 'outra professora dahora',
+            'contato': 'Lepique@bol.com.br',
+            'photo': 'https://www.google.com.br/imgres?imgurl=http%3A%2F%2Fwww.incthpv.org.br%2Fupl%2Fupl_img_quemsou%2F129477963595836978_Lepique.jpg&imgrefurl=http%3A%2F%2Fwww.incthpv.org.br%2Finstituto%2Fcurriculo.aspx%3FquemSou%3D8&docid=4gzCgJIu_2VMxM&tbnid=3esgbdmBTMZpwM%3A&vet=10ahUKEwj-9Z6D9cjbAhVDOZAKHQPdBT0QMwgnKAAwAA..i&w=150&h=223&bih=945&biw=918&q=ana%20paula%20lepique%20lattes&ved=0ahUKEwj-9Z6D9cjbAhVDOZAKHQPdBT0QMwgnKAAwAA&iact=mrc&uact=8',
+        }
     ]
 
     pr = [Professor(**p) for p in pr]
 
     return render_template('show_professors.html', form=form, pr=pr)
-
+    
 
 
 

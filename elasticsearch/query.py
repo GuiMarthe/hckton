@@ -24,7 +24,10 @@ def results_query(search_query):
 	results = []
 	for hit in res['hits']['hits']:
     	dic = dict()
-    	dic['orientador'] = hit['_source']['Orientador']
+    	if type( hit['_source']['Orientador']) == list:
+        dic['orientador'] = hit['_source']['Orientador'][0]
+      else:
+        dic['orientador'] = hit['_source']['Orientador']
     	dic['relevant_score'] = hit['_score']
     	dic['Unidade_da_USP'] = hit['_source']['Unidade da USP']
     	dic['area_do_conhecimento'] = hit['_source']['Área do Conhecimento']
