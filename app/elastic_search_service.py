@@ -66,7 +66,7 @@ class ElasticSearchService():
                 dic['name'] = hit['_source']['Orientador']
 
 
-            dic['score'] = math.ceil(float(hit['_score'])*10)
+            dic['score'] = float(hit['_score'])
             dic['department'] = hit['_source']['Unidade da USP']
             dic['field'] = hit['_source']['Área do Conhecimento']
             dic['key_words'] = hit['_source']['Palavras-chave em português']
