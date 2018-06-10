@@ -43,3 +43,4 @@ def search_professors():
         pr = [Professor(**p) for p in pr]
 
     return render_template('show_professors.html', form=form, pr=pr)
+
