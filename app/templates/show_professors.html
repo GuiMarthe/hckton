@@ -26,11 +26,11 @@
 			{% for item in pr %}
 				<div class="column is-3">
 					<figure class="image" style="width: 100%">
-						<a href="/show_professor?name={{json.puts(item) | urlencode}}">
+							<a href='/show_professor/?name={{item.name | urlencode}}'>
 							<img src="{{item.photo}}">
 							<p class="subtitle">{{item.name}}</p>
 						</a>
-						<p><b>Relevância:</b> {{ 100*item.score }}%</p>
+						<p><b>Relevância:</b> {{ item.score }}</p>
 					</figure>
 				</div>
 			{% endfor %}

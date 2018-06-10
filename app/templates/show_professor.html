@@ -4,11 +4,12 @@
 {% block content %}
 <div class="columns">
 	<div class="column is-4 is-offset-4">
-		{% if prof.photo%}
+		{% if prof.photo%} <figure class='image' style='width: 100%;'> <img src='{{prof.photo}}'></figure> {% endif %}
 		<div class="title">{{prof.name}}</div>
 		<div class="subtitle">{{prof.department}} ({{prof.field}})</div>
-		{% if prof.contato %} <p><b>Contato:</b> {{prof.contato}}</p> {% endif %}
-		<div> {% for kw in prof.key_words %} <span class="tag"> kw </span> {% endfor %} </div>
+		{% if prof.contato %} <p><b>Telefone:</b> {{prof.contato}}</p> {% endif %}
+		{% if prof.email != 'None' %} <p><b>Email:</b> {{prof.email}}</p> {% endif %}
+		<div> {% for kw in prof.key_words %} <span class="tag"> {{ kw }} </span> {% endfor %} </div>
 		{% for line in prof.pt_abstract.split('\n') %}
 		<p> {{line}} </p>
 		{% endfor %}
