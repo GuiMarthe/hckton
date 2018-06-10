@@ -39,6 +39,9 @@
 			
 			<div class="control">
 				{{form.submit(class_='button is-link')}}
+				{% if success %}
+				<span class="tag is-success is-medium">Divulgado!</span>
+				{% endif %}
 			</div>
 		</form>
 	</div>

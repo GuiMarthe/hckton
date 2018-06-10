@@ -8,7 +8,7 @@ class ProjectForm(FlaskForm):
     project_description = TextAreaField('Descrição do Projeto', validators=[DataRequired()])
     key_words = StringField('Palavras Chave', validators=[DataRequired()])
     project_title = StringField('Titulo do projeto', validators=[DataRequired()])
-    submit = SubmitField('Adicionar projeto')
+    submit = SubmitField('Divulgar projeto')
 
 
 class ProfessorSearch(FlaskForm):
