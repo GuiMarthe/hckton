@@ -5,17 +5,19 @@
 </head>
 <body>
 
-<div >
-
-	<h1 id="project_name">Nome do Projeto</h1>
-	<div id="prof_name">
-		<p>Orientador:</p>
-	</div>
-	<div id="description">
-		<p>Descrição:</p>
-</div>
-
-</div>
+<ul id = 'navigantion'>
+	{% for item in pl %}
+		<div >
+			<h1 id="project_name">{{item.project_title}}</h1>
+			<div id="prof_name">
+				<p>Orientador:{{item.professor_name}}</p>
+			</div>
+			<div id="description">
+				<p>Descrição: {{item.project_description}}</p>
+			</div>
+		</div>
+	{% endfor %}
+</ul>
 
 </body>
 </html>
