@@ -2,6 +2,7 @@ from flask import render_template, flash, redirect, request
 from app import app, db
 from app.forms import ProjectForm, ProfessorSearch
 from app.models import Project, Professor
+from app.elastic_search_service import ElasticSearchService
 
 @app.route('/add_project/', methods=['POST', 'GET'])
 def add_project():
@@ -31,6 +32,10 @@ def show_projects():
 @app.route('/show_professors/')
 def search_professors():
     form = ProfessorSearch(request.form)
+    if form.validate_on_submit():
+        query_string = form.search.data
+    es = ElasticSerachSerrvice()
+    pr = es.clean(es.query(query_string))
     pr = [
         {
             'name':  'Adilson simonis',

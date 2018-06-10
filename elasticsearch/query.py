@@ -1,10 +1,10 @@
-from elasticsearch import Elasticsearch 
+from elasticsearch import Elasticsearch
 from inject_data_ES import connect_to_ES
 
 import json
 import os
 
-fields = ["Área do Conhecimento", "Título em português", "Título em inglês", 
+fields = ["Área do Conhecimento", "Título em português", "Título em inglês",
           "Palavras-chave em português", "Palavras-chave em inglês",
          "Resumo em português", "Resumo em inglês"]
 
