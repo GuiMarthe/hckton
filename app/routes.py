@@ -88,6 +88,12 @@ def search_professors():
     return render_template('show_professors.html', form=form, pr=pr)
 
 
+@app.route('/create_project')
+def render_template('add_project'):
+
+@app.route('/search_profs')
+def render_template('search_professors'):
+    
 
     # pr = [
     #         {
