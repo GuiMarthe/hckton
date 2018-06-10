@@ -38,7 +38,7 @@ def search_professors():
     form = ProfessorSearch(request.form)
     if form.validate_on_submit():
         query_string = form.search.data
-    es = ElasticSerachSerrvice()
+    es = ElasticSearchService()
     pr = es.clean(es.query(query_string))
     pr = [
         {
@@ -88,12 +88,13 @@ def search_professors():
     return render_template('show_professors.html', form=form, pr=pr)
 
 
-@app.route('/create_project')
-def render_template('add_project'):
+# @app.route('/create_project')
+# def render_template():
+#     pass
 
-@app.route('/search_profs')
-def render_template('search_professors'):
-    
+# @app.route('/search_profs')
+# def render_template():
+#     pass
 
     # pr = [
     #         {
