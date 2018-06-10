@@ -7,26 +7,30 @@
 
 <p><input type="submit" name="Pesquisa">
 
-<div >
+<ul id = 'navigation'>
+	{% for item in pr %}
+		<div >
 
-	<h1 id="project_name">Nome do Professor</h1>
-	<div id="contact">
-		<p>Contato:</p>
-	</div>
-	<div id="location">
-		<p>Palavras chaves:</p>
-	</div>
-	<div id="areas">
-		<p>Áreas de Pesquisa:</p>
-	</div>
-	<div id="areas">
-		<p>Departamento:</p>
-	</div>
-	<div id="areas">
-		<p>Resumo:</p>
-	</div>
+			<h1 id="project_name">{{item.name}}</h1>
+			<div id="contact">
+				<p>Palavras chaves:{{item.key_words}}</p>
+			</div>
+			<div id="location">
+				<p>contato:{{item.contato}}</p>
+			</div>
+			<div id="areas">
+				<p>Áreas de Pesquisa:{{item.field}}</p>
+			</div>
+			<div id="areas">
+				<p>Departamento:{{item.department}}</p>
+			</div>
+			<div id="areas">
+				<p>Resumo:{{item.pt_abstract}}</p>
+			</div>
 
-</div>
+		</div>
+	{% endfor %}
+</ul>
 
 </body>
 </html>
